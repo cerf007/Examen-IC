@@ -1,0 +1,14 @@
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\bin\Debug\net8.0\Ejercicio_17.exe
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\bin\Debug\net8.0\Ejercicio_17.deps.json
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\bin\Debug\net8.0\Ejercicio_17.runtimeconfig.json
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\bin\Debug\net8.0\Ejercicio_17.dll
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\bin\Debug\net8.0\Ejercicio_17.pdb
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\obj\Debug\net8.0\Ejercicio_17.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\obj\Debug\net8.0\Ejercicio_17.AssemblyInfoInputs.cache
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\obj\Debug\net8.0\Ejercicio_17.AssemblyInfo.cs
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\obj\Debug\net8.0\Ejercicio_17.csproj.CoreCompileInputs.cache
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\obj\Debug\net8.0\Ejercicio_17.dll
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\obj\Debug\net8.0\refint\Ejercicio_17.dll
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\obj\Debug\net8.0\Ejercicio_17.pdb
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\obj\Debug\net8.0\Ejercicio_17.genruntimeconfig.cache
+C:\Users\duke2\Downloads\Ejercicios del Miércoles 24 Programacion\Ejercicio_17\obj\Debug\net8.0\ref\Ejercicio_17.dll
