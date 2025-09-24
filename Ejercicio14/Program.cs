@@ -8,92 +8,144 @@
 
 ///Gestión de notas de estudiantes
 using System;
+using System.Collections.Generic;
 
 class Program
 {
-    // 1. Usa una variable global para almacenar el número secreto.
-    static int numeroSecreto = new Random().Next(1, 101); // Número secreto generado aleatoriamente
-    static int intentosTotales = 0; // Contador global de intentos
+    // 1. Declara una lista global que almacene todas las notas.
+    static List<double> notas = new List<double>();
 
     static void Main()
     {
-        Console.WriteLine("=== JUEGO DE ADIVINANZA MEJORADO ===");
-        Console.WriteLine("Adivina el número secreto entre 1 y 100");
+        Console.WriteLine("=== GESTIÓN DE NOTAS DE ESTUDIANTES ===");
 
-        Jugar();
-    }
-
-    // 2. Un método con variables locales debe pedir al usuario que adivine.
-    static void Jugar()
-    {
-        int intentoUsuario; // Variable local
-        bool adivinado = false; // Variable local
-
-        while (!adivinado)
+        bool continuar = true;
+        while (continuar)
         {
-            intentoUsuario = PedirIntento();
-            if (intentoUsuario != -1) // -1 indica error de validación
+            Console.WriteLine("\n1. Agregar nota");
+            Console.WriteLine("2. Calcular promedio");
+            Console.WriteLine("3. Mostrar notas extremas");
+            Console.WriteLine("4. Mostrar todas las notas");
+            Console.WriteLine("5. Salir");
+            Console.Write("Seleccione una opción: ");
+
+            string opcion = Console.ReadLine();
+
+            switch (opcion)
             {
-                adivinado = VerificarIntento(intentoUsuario);
+                case "1":
+                    AgregarNota(); //  Agregar una nota.
+                    break;
+                case "2":
+                    CalcularPromedio(); //  Calcular el promedio (solo con variables locales).
+                    break;
+                case "3":
+                    MostrarNotasExtremas(); //  Mostrar la nota más alta y la más baja.
+                    break;
+                case "4":
+                    MostrarTodasLasNotas();
+                    break;
+                case "5":
+                    continuar = false;
+                    break;
+                default:
+                    Console.WriteLine("Opción no válida");
+                    break;
             }
         }
     }
 
-    static int PedirIntento()
+    //  Método local para agregar una nota.
+    static void AgregarNota()
     {
         try
         {
-            Console.Write("Ingresa tu número (1-100): ");
+            Console.Write("Ingrese la nota (0-100): ");
             string input = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(input))
             {
-                Console.WriteLine("Error: Debes ingresar un número");
-                return -1;
+                Console.WriteLine("Error: La nota no puede estar vacía");
+                return;
             }
 
-            int intento = Convert.ToInt32(input);
+            double nota = Convert.ToDouble(input);
 
-            if (intento < 1 || intento > 100)
+            if (nota < 0 || nota > 100)
             {
-                Console.WriteLine("Error: El número debe estar entre 1 y 100");
-                return -1;
+                Console.WriteLine("Error: La nota debe estar entre 0 y 100");
+                return;
             }
 
-            return intento;
+            if (double.IsNaN(nota) || double.IsInfinity(nota))
+            {
+                Console.WriteLine("Error: La nota no es un número válido");
+                return;
+            }
+
+            notas.Add(Math.Round(nota, 2));
+            Console.WriteLine($"Nota {Math.Round(nota, 2)} agregada correctamente");
         }
         catch (FormatException)
         {
-            Console.WriteLine("Error: Debes ingresar un número válido");
-            return -1;
+            Console.WriteLine("Error: Debe ingresar un número válido");
         }
         catch (OverflowException)
         {
             Console.WriteLine("Error: El número es demasiado grande");
-            return -1;
         }
     }
 
-    // 3. Otro método debe aumentar un contador global de intentos y mostrar un mensaje de acierto o error.
-    static bool VerificarIntento(int intento)
+    //  Método local para calcular el promedio (solo con variables locales).
+    static void CalcularPromedio()
     {
-        intentosTotales++; // Incrementa el contador global
-
-        if (intento == numeroSecreto)
+        if (notas.Count == 0)
         {
-            Console.WriteLine($"¡FELICIDADES! Adivinaste en {intentosTotales} intentos");
-            return true;
-        }
-        else if (intento < numeroSecreto)
-        {
-            Console.WriteLine("El número secreto es MAYOR");
-        }
-        else
-        {
-            Console.WriteLine("El número secreto es MENOR");
+            Console.WriteLine("Error: No hay notas registradas");
+            return;
         }
 
-        Console.WriteLine($"Intentos realizados: {intentosTotales}");
-        return false;
+        double suma = 0;
+        int cantidad = notas.Count;
+
+        foreach (double nota in notas)
+        {
+            suma += nota;
+        }
+
+        double promedio = suma / cantidad;
+        Console.WriteLine($"Promedio de {cantidad} notas: {promedio:F2}");
+    }
+
+    //  Método local para mostrar la nota más alta y la más baja.
+    static void MostrarNotasExtremas()
+    {
+        if (notas.Count == 0)
+        {
+            Console.WriteLine("Error: No hay notas registradas");
+            return;
+        }
+
+        double maxima = notas.Max();
+        double minima = notas.Min();
+
+        Console.WriteLine($"Nota más alta: {maxima:F2}");
+        Console.WriteLine($"Nota más baja: {minima:F2}");
+        Console.WriteLine($"Rango: {maxima - minima:F2}");
+    }
+
+    static void MostrarTodasLasNotas()
+    {
+        if (notas.Count == 0)
+        {
+            Console.WriteLine("No hay notas registradas");
+            return;
+        }
+
+        Console.WriteLine($"Total de notas: {notas.Count}");
+        for (int i = 0; i < notas.Count; i++)
+        {
+            Console.WriteLine($"Nota {i + 1}: {notas[i]:F2}");
+        }
     }
 }
