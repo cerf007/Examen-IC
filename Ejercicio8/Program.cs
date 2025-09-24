@@ -1,51 +1,71 @@
-﻿// Control de sesión con variable global
+﻿//8.Control de sesión con variable global
+//	Declara una variable global booleana sesionIniciada. Simula un inicio de sesión que la cambie a true cuando el usuario ingrese la contraseña correcta.
+
 using System;
 
 class ControlSesion
 {
     static bool sesionIniciada = false; // Variable global para controlar el estado de sesión
+    const string contraseñaCorrecta = "1234";
+    const int maxIntentos = 3;
 
     static void IniciarSesion()
     {
         Console.WriteLine("=== Inicio de Sesión ===");
         Console.WriteLine("Ingresa la contraseña para acceder al sistema.");
 
-        string contraseñaCorrecta = "1234";
+        int intentosRestantes = maxIntentos;
 
-        Console.Write("Contraseña: ");
-        string entrada = Console.ReadLine();
-
-        // Validamos que la entrada no esté vacía
-        if (!string.IsNullOrWhiteSpace(entrada))
+        while (intentosRestantes > 0 && !sesionIniciada)
         {
-            if (entrada == contraseñaCorrecta)
+            Console.Write("Contraseña: ");
+            string entrada = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(entrada))
+            {
+                Console.WriteLine(" La entrada no puede estar vacía.");
+            }
+            else if (ValidarContraseña(entrada))
             {
                 sesionIniciada = true;
-                Console.WriteLine("Sesión iniciada correctamente.");
+                Console.WriteLine(" Sesión iniciada correctamente.");
             }
             else
             {
-                Console.WriteLine("Contraseña incorrecta.");
+                intentosRestantes--;
+                Console.WriteLine($" Contraseña incorrecta. Intentos restantes: {intentosRestantes}");
             }
         }
-        else
+
+        if (!sesionIniciada)
         {
-            Console.WriteLine("La entrada no puede estar vacía.");
+            Console.WriteLine(" Se ha alcanzado el número máximo de intentos.");
         }
+    }
+
+    static bool ValidarContraseña(string entrada)
+    {
+        return entrada == contraseñaCorrecta;
     }
 
     static void Main()
     {
-        IniciarSesion();
+        try
+        {
+            IniciarSesion();
 
-        // Indicamos si el acceso fue exitoso o no
-        if (sesionIniciada)
-        {
-            Console.WriteLine("Bienvenido al sistema.");
+            if (sesionIniciada)
+            {
+                Console.WriteLine(" Bienvenido al sistema.");
+            }
+            else
+            {
+                Console.WriteLine(" Acceso denegado.");
+            }
         }
-        else
+        catch (Exception ex)
         {
-            Console.WriteLine("Acceso denegado.");
+            Console.WriteLine($" Error inesperado: {ex.Message}");
         }
     }
 }
