@@ -5,6 +5,7 @@
 //ii.	Potencias y raíces cuadradas.
 //b.	Cada vez que se realice una operación, el último resultado debe actualizarse en la variable global.
 
+///Calculador cientifica basica
 using System;
 
 class Program
@@ -65,7 +66,6 @@ class Program
             }
         }
     }
-
     // Método auxiliar para leer números con validación
     static double LeerNumero(string mensaje)
     {
@@ -102,7 +102,6 @@ class Program
             }
         }
     }
-
     // a.i. Método local para sumar
     // b. Actualiza el último resultado
     static void OperacionSumar()
@@ -114,7 +113,6 @@ class Program
         ultimoResultado = resultado;
         Console.WriteLine($"{a} + {b} = {resultado:F2}");
     }
-
     // a.i. Método local para restar
     static void OperacionRestar()
     {
@@ -125,7 +123,6 @@ class Program
         ultimoResultado = resultado;
         Console.WriteLine($"{a} - {b} = {resultado:F2}");
     }
-
     // a.i. Método local para multiplicar
     static void OperacionMultiplicar()
     {
@@ -136,7 +133,6 @@ class Program
         ultimoResultado = resultado;
         Console.WriteLine($"{a} × {b} = {resultado:F2}");
     }
-
     // a.i. Método local para dividir
     static void OperacionDividir()
     {
@@ -153,7 +149,6 @@ class Program
         ultimoResultado = resultado;
         Console.WriteLine($"{a} ÷ {b} = {resultado:F2}");
     }
-
     // a.ii. Método local para potencia
     static void OperacionPotencia()
     {
@@ -170,7 +165,6 @@ class Program
         ultimoResultado = resultado;
         Console.WriteLine($"{baseNum} ^ {exponente} = {resultado:F2}");
     }
-
     // a.ii. Método local para raíz cuadrada
     static void OperacionRaizCuadrada()
     {
@@ -186,4 +180,3 @@ class Program
         ultimoResultado = resultado;
         Console.WriteLine($"√{numero} = {resultado:F2}");
     }
-}
