@@ -1,5 +1,5 @@
-﻿// Edad de una persona con variables locales
-using System;
+﻿//5.	Edad de una persona con variables locales
+//	Diseña un método que use variables locales para leer el año de nacimiento de una persona y calcule su edad. La edad no debe almacenarse de forma global.
 
 class ProgramaEdad
 {
@@ -8,28 +8,34 @@ class ProgramaEdad
         Console.WriteLine("=== Cálculo de Edad ===");
         Console.WriteLine("Este programa calcula tu edad según el año de nacimiento.");
 
-        Console.Write("Ingresa tu año de nacimiento: ");
-        string entrada = Console.ReadLine();
+        int añoNacimiento = 0;
+        int añoActual = DateTime.Now.Year;
+        bool entradaValida = false;
 
-        // Validamos que el usuario haya ingresado un número válido
-        if (int.TryParse(entrada, out int añoNacimiento))
+        while (!entradaValida)
         {
-            int añoActual = DateTime.Now.Year;
+            Console.Write("Ingresa tu año de nacimiento: ");
+            string entrada = Console.ReadLine();
 
-            if (añoNacimiento > 1900 && añoNacimiento <= añoActual)
+            if (int.TryParse(entrada, out añoNacimiento))
             {
-                int edad = añoActual - añoNacimiento;
-                Console.WriteLine($"Tu edad es: {edad} años.");
+                if (añoNacimiento > 1900 && añoNacimiento <= añoActual)
+                {
+                    entradaValida = true;
+                }
+                else
+                {
+                    Console.WriteLine($"El año ingresado no es válido. Debe estar entre 1900 y {añoActual}.");
+                }
             }
             else
             {
-                Console.WriteLine("El año ingresado no es válido. Debe estar entre 1900 y el año actual.");
+                Console.WriteLine("Entrada inválida. Por favor, ingresa un número entero.");
             }
         }
-        else
-        {
-            Console.WriteLine("Entrada inválida. Por favor, ingresa un número.");
-        }
+
+        int edad = añoActual - añoNacimiento;
+        Console.WriteLine($"Tu edad es: {edad} años.");
     }
 
     static void Main()
